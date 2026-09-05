@@ -13,7 +13,8 @@
     "gen": "wrangler types",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "prepare": "svelte-kit sync || echo ''",
+    "prepare": "svelte-kit sync || echo '' && npm run setup:hooks || echo ''",
+    "setup:hooks": "git config core.hooksPath .githooks",
     "test": "vitest",
     "preview": "wrangler pages dev .svelte-kit/cloudflare --port 4173"
   },

@@ -1,0 +1,25 @@
+#!/bin/sh
+# Pre-commit hook: format with oxfmt and re-stage formatted files.
+# Installed via: git config core.hooksPath .githooks (runs automatically on `npm install` via `prepare` script).
+# Only files already staged are re-staged, so partial commits
+# (e.g. GitHub Desktop's file selection) are left untouched.
+
+staged_list=$(mktemp) || exit 1
+git diff --cached --name-only --diff-filter=ACMR -z > "$staged_list" || {
+  rm -f "$staged_list"
+  exit 1
+}
+
+npm run fmt || {
+  rm -f "$staged_list"
+  exit 1
+}
+
+if [ -s "$staged_list" ]; then
+  xargs -0 git add -- < "$staged_list"
+  status=$?
+  rm -f "$staged_list"
+  exit $status
+fi
+
+rm -f "$staged_list"
