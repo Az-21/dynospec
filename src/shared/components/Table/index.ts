@@ -1,0 +1,12 @@
+export { default as Table } from "./Table.svelte";
+export { default } from "./Table.svelte";
+export { createDefaultTableFeatures, createDefaultTableOptions } from "./table-features.js";
+export type { DefaultTableFeatures } from "./table-features.js";
+export type { MoveDirection, TableInstance, ToolbarAction } from "./table-types.js";
+export { moveTableColumn, toAriaSort, toFilterInputValue } from "./table-utils.js";
+export { clearTableOverrides, loadTableOverrides, persistTableState } from "./table-persistence.svelte";
+export type { TableSaveStatus } from "./table-persistence.svelte";
+export { default as TableBody } from "./TableBody.svelte";
+export { default as TableHeader } from "./TableHeader.svelte";
+export { default as TableToolbar } from "./TableToolbar.svelte";
+export { default as TruncatedText } from "./TruncatedText.svelte";
