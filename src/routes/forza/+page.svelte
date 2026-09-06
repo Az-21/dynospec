@@ -1,18 +1,15 @@
 <script lang="ts">
   import { forzaHorizon5Tunes } from "$lib/data/forza/forza-horizon-5";
   import { forzaHorizon6Tunes } from "$lib/data/forza/forza-horizon-6";
-  import GameFranchiseSection from "$shared/components/GameFranchiseSection.svelte";
   import GameHeroCard from "$shared/components/GameHeroCard.svelte";
 </script>
 
 <div class="flex flex-col gap-6">
   <div class="flex flex-col gap-2">
-    <h1 class="text-4xl font-black tracking-tight text-balance sm:text-5xl">
-      Welcome to <span class="text-primary">DynoSpec</span>
-    </h1>
+    <p class="text-base-content/60 text-xs font-bold tracking-[0.3em] uppercase">Forza Series</p>
   </div>
 
-  <GameFranchiseSection href="/forza" title="Forza Series">
+  <div class="grid gap-6 md:grid-cols-2">
     <GameHeroCard
       href="/forza/forza-horizon-5"
       kicker="Forza Series"
@@ -25,5 +22,5 @@
       title="Forza Horizon 6"
       meta="{forzaHorizon6Tunes.length} tunes"
     />
-  </GameFranchiseSection>
+  </div>
 </div>
