@@ -7,6 +7,8 @@
 </script>
 
 <svelte:head>
+  <title>DynoSpec</title>
+  <meta name="description" content="DynoSpec - Tunes DB" />
   <link rel="icon" href={favicon} />
 </svelte:head>
 
