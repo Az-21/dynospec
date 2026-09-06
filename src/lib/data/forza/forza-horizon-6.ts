@@ -10,7 +10,8 @@ const _tunes: z.input<typeof ForzaTuneSchema>[] = [
     },
     tune: {
       creator: "KapienPL",
-      comment: null,
+      comment:
+        "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
       leaderboard: null,
       difficulty: 1,
       speed: 1,
@@ -35,6 +36,30 @@ const _tunes: z.input<typeof ForzaTuneSchema>[] = [
       creator: "ESV Mars",
       comment: null,
       leaderboard: "Track XYZ | 01:23 | Top 3k",
+      difficulty: 2,
+      speed: 2,
+      handling: 2,
+      meta: 2,
+    },
+    forza: {
+      class: "A",
+      shareCode: "456 456 789",
+      createdOn: "2026-09-01",
+      discipline: "Road",
+      drivetrain: "AWD",
+    },
+  },
+  {
+    car: {
+      make: "Nissan",
+      model: "Skyline GT-R (R33)",
+      year: 2001,
+    },
+    tune: {
+      creator: "ESV Mars",
+      comment: null,
+      leaderboard:
+        "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
       difficulty: 2,
       speed: 2,
       handling: 2,
