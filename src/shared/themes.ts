@@ -26,6 +26,12 @@ export const LIGHT_THEMES = [
 ] as const;
 
 export const DARK_THEMES = [
+  // Custom dark themes defined via `@plugin "daisyui/theme"` in `src/app.css`.
+  "macos-dark",
+  "material-expressive",
+  "monokai",
+  "ayu-dark",
+  // Built-in DaisyUI themes
   "dark",
   "synthwave",
   "halloween",
@@ -47,9 +53,19 @@ const ALL_THEMES = [...LIGHT_THEMES, ...DARK_THEMES] as const;
 export const themeNameSchema = z.enum(ALL_THEMES);
 export type ThemeName = z.infer<typeof themeNameSchema>;
 
-// Display transform: capitalize the first letter ("caramellatte" -> "Caramellatte").
-// Raw theme names are still used for `data-theme`, storage, and `aria-label` values.
-export const themeDisplayNameSchema = themeNameSchema.transform((name) => name.charAt(0).toUpperCase() + name.slice(1));
+// Display transform: humanize kebab-case ("caramellatte" -> "Caramellatte",
+// "macos-dark" -> "macOS Dark"). Raw theme names are still used for
+// `data-theme`, storage, and `aria-label` values.
+const DISPLAY_WORDS: Record<string, string> = {
+  macos: "macOS",
+};
+
+export const themeDisplayNameSchema = themeNameSchema.transform((name) =>
+  name
+    .split(/[-_]+/)
+    .map((word) => DISPLAY_WORDS[word] ?? word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" "),
+);
 
 export function formatThemeName(name: ThemeName): string {
   return themeDisplayNameSchema.parse(name);
@@ -58,5 +74,5 @@ export function formatThemeName(name: ThemeName): string {
 export const brightnessFilterSchema = z.enum(["all", "light", "dark"]);
 export type BrightnessFilter = z.infer<typeof brightnessFilterSchema>;
 
-export const DEFAULT_THEME = themeNameSchema.parse("forest");
+export const DEFAULT_THEME = themeNameSchema.parse("macos-dark");
 export const THEME_STORAGE_KEY = "dynospec-theme";
